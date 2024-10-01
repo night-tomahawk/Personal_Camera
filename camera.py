@@ -75,29 +75,24 @@ def on_closing():
 window = tk.Tk()
 window.title('Camera')
 window.geometry('800x800')
-background_img = PhotoImage(file='821543.png')
+background_img = PhotoImage(file='IconCamera.png')
 background_label = Label(window, image=background_img)
 background_label.place(relwidth=1, relheight=1)
 
 
 def get_button(text: str, bg: str, fg: str, padx: int, pady: int, command):
-    return tk.Button(window, text=text, font=('Times New Roman', 24), bg=bg, fg=fg, padx=padx, pady=pady, command=command)
+    return tk.Button(window, text=text, font=('Times New Roman', 24), bg=bg, fg=fg, padx=padx, pady=pady,
+                     command=command)
 
 
 Label = tk.Label(window, text='Добро пожаловать!', font=('Times New Roman', 24))
 Label.pack(pady=20)
-# button_start = tk.Button(window, text='Начать просмотр', bg='blue', fg='white', padx=30, pady=30,
-#                          font=('Times New Roman', 20), command=on_button_click)
 button_start = get_button("Начать просмотр", "blue", "white", 30, 30, on_start_camera)
 button_start.pack(pady=10)
-button_save = get_button("Сохранить снимок", "green", "white", 30, 30, command=lambda: save_frame(current_frame))
-
-# button_save = tk.Button(window, text='Сохранить снимок', bg='green', fg='white', padx=40, pady=40,
-#                         font=('Times New Roman', 20), command=lambda: save_frame(current_frame))
+button_save = get_button("Сохранить снимок", "green", "white", 30, 30,
+                         command=lambda: save_frame(current_frame))
 button_save.pack(pady=10)
-
-button_stop = tk.Button(window, text='Закрыть приложение', bg='blue', fg='white', padx=50, pady=50,
-                        font=('Times New Roman', 20), command=on_closing)
+button_stop = get_button("Закрыть приложение", "blue", "white", 50, 50, command=on_closing)
 button_stop.pack(pady=10)
 brightness_scale = tk.Scale(window, from_=0, to=100, label='Уровень яркости', orient=tk.HORIZONTAL,
                             command=adjust_brightness)
